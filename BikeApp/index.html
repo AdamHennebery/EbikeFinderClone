@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find your bike</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            -moz-tap-highlight-color: transparent;
+        }
+
+        .checkbox {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .answers {
+            display: flex;
+            justify-content: center;
+            /* Center the items horizontally */
+            /* Align items at the start of the flex container */
+            flex-direction: column;
+
+
+
+
+
+        }
+
+        .checkbox:hover .checkbox_check {
+            background: #54860026;
+        }
+
+        .checkbox_input {
+            width: 0;
+            height: 0;
+            opacity: 0;
+            transform: scale(0.3);
+
+            /* Set a fixed width for the checkbox */
+        }
+
+        .checkbox_input:checked+.checkbox_check {
+            background: #38743c;
+            stroke-dashoffset: 0;
+        }
+
+        .checkbox_check {
+            border: 1.06rem solid #38743c;
+            background: transparent;
+            stroke: #f9f9f9;
+            stroke-dasharray: 131;
+            stroke-dashoffset: -130;
+            stroke-linecap: round;
+            stroke-width: 1.06rem;
+            fill: none;
+            border-radius: 1.06rem;
+            transition: background .4s, stroke-dashoffset 1s;
+            transform: scale(.3);
+        }
+
+        .label-text {
+            font-size: 60px;
+        }
+
+        .answers label .checkbox_input {
+            margin-right: 10px;
+            /* Add some spacing between checkbox and label */
+        }
+
+        .question-page {
+            display: none;
+
+            /* Center align the content */
+        }
+
+        .question-page.active {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form {
+            width: 100%;
+
+        }
+
+        .question-page.active h2 {
+            font-size: 50px;
+        }
+
+
+
+        .title-container {
+            background-color: #38743c;
+            /* Set background color for the title container */
+            padding: 20px;
+            /* Add some padding for spacing */
+            text-align: center;
+            /* Center align the title */
+        }
+
+        .title-container::before {
+            content: url('images/logo.webp');
+            /* Set the URL of your image */
+            position: absolute;
+            /* Set position to absolute */
+            top: 5%;
+            /* Align the top of the image with the middle of the container */
+            left: 10px;
+            /* Adjust the left position as needed */
+            /* Vertically center the image */
+            width: 100px;
+            /* Set the width of the image */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        .title {
+            font-size: 70px;
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        body {
+            background-color: white;
+            /* Set background color for the whole page */
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+            /* Remove default padding */
+            font-family: 'Jaldi', sans-serif;
+        }
+
+        .check_align {
+            display: flex;
+            align-items: center;
+        }
+
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 columns with equal width */
+            gap: 20px;
+            /* Gap between grid items */
+        }
+
+        .bike-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .bike-item img {
+            max-width: 100%;
+        }
+
+        .results-header {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        button {
+
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 17px;
+            line-height: 1;
+            border-radius: 500px;
+            transition-property: background-color, border-color, color, box-shadow, filter;
+            transition-duration: .3s;
+            border: 1px solid transparent;
+            letter-spacing: 2px;
+            min-width: 180px;
+            text-transform: uppercase;
+            white-space: normal;
+            font-weight: 700;
+            text-align: center;
+            padding: 16px 14px 18px;
+            color: #fff;
+            background-color: #38743c;
+            height: 48px;
+
+
+
+        }
+
+        button:hover {
+            background-color: #1db954;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title-container"> <!-- Container for the title -->
+        <h1 class="title">Find your bike</h1>
+    </div>
+    <form class="form" id="questionnaireForm"> <!-- Added form element -->
+        <div class="question-page active" id="terrainQuestion">
+            <div>
+                <h2>What type of terrain do you expect to ride on?</h2>
+            </div>
+            <div class="answers">
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="terrain" value="pavement">
+                    <div class="check_align">
+
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Pavement</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="terrain" value="dirt">
+                    <div class="check_align">
+
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Dirt</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="terrain" value="gravel">
+                    <div class="check_align">
+
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Gravel</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="terrain" value="snow_ice">
+                    <div class="check_align">
+
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Snow/Ice</span>
+                    </div>
+                </label>
+            </div>
+            <button type="button" onclick="nextQuestion('motorQuestion')">Next</button>
+        </div>
+
+        <div class="question-page" id="motorQuestion">
+            <div>
+                <h2>Motor Size</h2>
+            </div>
+            <div class="answers">
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="motor" value="250">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">250W</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="motor" value="500">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">500W</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="motor" value="750">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">750W</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="motor" value="1000">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">1000W</span>
+                    </div>
+                </label>
+            </div>
+            <button type="button" onclick="nextQuestion('frameQuestion')">Next</button>
+        </div>
+
+        <div class="question-page" id="frameQuestion">
+            <div>
+                <h2>Frame Style</h2>
+            </div>
+            <div class="answers">
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="frame" value="step_through">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Step-through</span>
+                    </div>
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox_input" name="frame" value="step_over">
+                    <div class="check_align">
+                        <svg class="checkbox_check" width="128" height="128">
+                            <polyline points="106 32 48 91 22 64"></polyline>
+                        </svg>
+                        <span class="label-text">Step-over</span>
+                    </div>
+                </label>
+            </div>
+            <button type="submit">Submit</button> <!-- Changed type to "submit" -->
+        </div>
+    </form> <!-- Closed form element -->
+
+
+
+    <div id="results"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkboxes = document.querySelectorAll('.checkbox_input');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    const checkboxCheck = this.parentNode.querySelector('.checkbox_check');
+                    if (this.checked) {
+                        checkboxCheck.style.background = '#38743c';
+                        checkboxCheck.style.strokeDashoffset = '0';
+                    } else {
+                        checkboxCheck.style.background = 'transparent';
+                        checkboxCheck.style.strokeDashoffset = '-130';
+                    }
+                });
+            });
+            const form = document.getElementById("questionnaireForm");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const selectedTerrains = Array.from(form.querySelectorAll("input[name='terrain']:checked"))
+                    .map(input => input.value);
+                const selectedFrameCheckboxes = form.querySelectorAll("input[name='frame']:checked");
+                const selectedFrame = Array.from(selectedFrameCheckboxes).map(checkbox => checkbox.value);
+                const selectedMotorCheckboxes = form.querySelectorAll("input[name='motor']:checked");
+                const selectedMotor = Array.from(selectedMotorCheckboxes).map(checkbox => checkbox.value);
+                console.log("Selected Motor:", selectedMotor);
+
+                // Call a function to filter bikes based on selected terrains and frame style
+                const filteredBikes = filterBikes(selectedTerrains, selectedFrame, selectedMotor);
+                displayBikes(filteredBikes);
+            });
+        });
+
+        function nextQuestion(nextPageId) {
+            const currentPage = document.querySelector('.question-page.active');
+            const nextPage = document.getElementById(nextPageId);
+            currentPage.classList.remove('active');
+            nextPage.classList.add('active');
+        }
+
+        function filterBikes(selectedTerrains, selectedFrame, selectedMotor) {
+
+
+            // Assume you have a list of bikes with their terrain suitability and frame styles
+            const bikes = [
+                { name: "Aventon Aventure 2", image: "images/aventure_st.jpg", terrains: ["pavement", "dirt", "gravel", "snow_ice"], motor: "750", frame: "step_over", specs: "Motor:750Watts Battery 447am" },
+                { name: "Aventon Level 2", image: "images/Level2_SO.jpg", terrains: ["pavement", "dirt"], motor: "500", frame: "step_over" },
+                { name: "Aventon Pace 500", image: "images/pace500_st.jpg", terrains: ["pavement"], motor: "500", frame: "step_through" },
+                { name: "Aventon Sinch 2", image: "images/sinch2.jpg", terrains: ["pavement", "dirt", "gravel", "snow_ice"], motor: "500", frame: "step_through" },
+                { name: "QuietKat Ranger", image: "images/quietkat_ranger.jpg", terrains: ["dirt", "gravel", "snow_ice"], motor: "1000", frame: "step_over" },
+                { name: "QuietKat Apex Pro", image: "images/apexpro.jpg", terrains: ["dirt", "gravel", "snow_ice"], motor: "1000", frame: "step_over" },
+                // Add more bikes as needed
+            ];
+
+            const selectedMotorInt = selectedMotor ? Array.isArray(selectedMotor) ? selectedMotor.map(motor => parseInt(motor)) : [parseInt(selectedMotor)] : null;
+            const selectedFrameArray = Array.isArray(selectedFrame) ? selectedFrame : [selectedFrame]; // Convert selectedFrame to an array if it's not already
+            const filteredBikes = bikes.filter(bike => {
+
+                const terrainMatch = selectedTerrains.some(terrain => bike.terrains.includes(terrain));
+                const frameMatch = selectedFrameArray.length === 0 || selectedFrameArray.includes(bike.frame); // Check if bike's frame is included in the selectedFrameArray
+                const motorMatch = !selectedMotorInt || selectedMotorInt.some(motor => parseInt(bike.motor) === motor);
+
+                return terrainMatch && frameMatch && motorMatch;
+            });
+
+            return filteredBikes;
+        }
+
+        function displayBikes(bikes) {
+            const resultsDiv = document.getElementById("results");
+            const questionPage = document.getElementById("frameQuestion");
+
+            // Hide the question page
+            questionPage.classList.remove('active');
+            resultsDiv.innerHTML = "<h2>Recommended Bikes</h2>";
+            resultsDiv.classList.add("results-header")
+            if (bikes.length === 0) {
+                resultsDiv.innerHTML += "<p>No bikes found for selected criteria.</p>";
+            } else {
+                const bikeGrid = document.createElement("div");
+                bikeGrid.classList.add("bike-grid");
+
+                bikes.forEach(bike => {
+                    const bikeItem = document.createElement("div");
+                    bikeItem.classList.add("bike-item");
+
+                    const bikeImage = document.createElement("img");
+                    bikeImage.src = bike.image; // Assuming the images are named accordingly
+
+                    const bikeName = document.createElement("h3");
+                    bikeName.textContent = bike.name;
+
+                    const bikeSpecs = document.createElement("p");
+                    bikeSpecs.textContent = bike.specs; // Add bike specifications here
+
+                    bikeItem.appendChild(bikeImage);
+                    bikeItem.appendChild(bikeName);
+                    bikeItem.appendChild(bikeSpecs);
+                    bikeGrid.appendChild(bikeItem);
+                });
+                resultsDiv.appendChild(bikeGrid);
+            }
+        }
+    </script>
+</body>
+
+</html>
