@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap');
 
+/* FORM STYLES */
 * {
     margin: 0;
     padding: 0;
@@ -9,65 +10,63 @@
     -moz-tap-highlight-color: transparent;
 }
 
-.checkbox {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
+.title-container {
+    position: relative;
+    background-color: #38743c;
+    /* Set background color for the title container */
+    padding: 20px;
+    /* Add some padding for spacing */
+    text-align: center;
+    /* Center align the title */
 }
 
-.answers {
-    display: flex;
-    justify-content: center;
-    /* Center the items horizontally */
-    /* Align items at the start of the flex container */
-    flex-direction: column;
-
-
-
-
-
+.logo {
+    position: absolute;
+    top: 50%; /* Vertically center the logo */
+    transform: translateY(-50%); /* Correctly center the logo vertically */
+    height: auto; /* Maintain aspect ratio */
+    width: 300px;
 }
 
-.checkbox:hover .checkbox_check {
-    background: #54860026;
+.left-logo {
+    left: 10px; /* Adjust the left position as needed */
 }
 
-.checkbox_input {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    transform: scale(0.3);
-
-    /* Set a fixed width for the checkbox */
+.right-logo {
+    right: 10px; /* Adjust the right position as needed */
 }
 
-.checkbox_input:checked+.checkbox_check {
-    background: #38743c;
-    stroke-dashoffset: 0;
+
+
+.title {
+    font-size: 70px;
+    margin: 0;
+    /* Remove default margin */
 }
 
-.checkbox_check {
-    border: 1.06rem solid #38743c;
-    background: transparent;
-    stroke: #f9f9f9;
-    stroke-dasharray: 131;
-    stroke-dashoffset: -130;
-    stroke-linecap: round;
-    stroke-width: 1.06rem;
-    fill: none;
-    border-radius: 1.06rem;
-    transition: background .4s, stroke-dashoffset 1s;
-    transform: scale(.3);
+body {
+    background-color: white;
+    /* Set background color for the whole page */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    font-family: 'Jaldi', sans-serif;
+    
 }
 
-.label-text {
-    font-size: 60px;
-}
-
-.answers label .checkbox_input {
-    margin-right: 10px;
-    /* Add some spacing between checkbox and label */
+.background-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/bgg.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    filter: blur(8px);
+    z-index: -1; /* Move the background behind other content */
 }
 
 .question-page {
@@ -93,55 +92,74 @@
 
 
 
-.title-container {
-    background-color: #38743c;
-    /* Set background color for the title container */
-    padding: 20px;
-    /* Add some padding for spacing */
-    text-align: center;
-    /* Center align the title */
-}
-
-.title-container::before {
-    content: url('images/logo.webp');
-    /* Set the URL of your image */
-    position: absolute;
-    /* Set position to absolute */
-    top: 5%;
-    /* Align the top of the image with the middle of the container */
-    left: 10px;
-    /* Adjust the left position as needed */
-    /* Vertically center the image */
-    width: 100px;
-    /* Set the width of the image */
-    height: auto;
-    /* Maintain aspect ratio */
-}
-
-
-
-.title {
-    font-size: 70px;
-    margin: 0;
-    /* Remove default margin */
-}
-
-body {
-    background-color: white;
-    /* Set background color for the whole page */
-    margin: 0;
-    /* Remove default margin */
-    padding: 0;
-    /* Remove default padding */
-    font-family: 'Jaldi', sans-serif;
-}
-
 .check_align {
     display: flex;
     align-items: center;
 }
 
+.answers {
+    display: flex;
+    justify-content: center;
+    /* Center the items horizontally */
+    /* Align items at the start of the flex container */
+    flex-direction: column;
+
+}
+
+.checkbox {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.checkbox:hover .checkbox_check {
+    background: #54860026;
+}
+
+.checkbox_input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform: scale(0.3);
+
+    /* Set a fixed width for the checkbox */
+}
+
+.checkbox_input:checked+.checkbox_check {
+    background: #38743c;
+    stroke-dashoffset: 0;
+}
+
+.checkbox_check {
+    border: 1.06rem solid #000000;
+    background: transparent;
+    stroke: #f9f9f9;
+    stroke-dasharray: 131;
+    stroke-dashoffset: -130;
+    stroke-linecap: round;
+    stroke-width: 1.06rem;
+    fill: none;
+    border-radius: 1.06rem;
+    transition: background .4s, stroke-dashoffset 1s;
+    transform: scale(.3);
+}
+
+.label-text {
+    font-size: 60px;
+}
+
+.answers label .checkbox_input {
+    margin-right: 10px;
+    /* Add some spacing between checkbox and label */
+}
+
+
+
 .bike-grid {
+    padding: 25px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* 3 columns with equal width */
@@ -149,7 +167,11 @@ body {
     /* Gap between grid items */
 }
 
+
+/* BIKE GRID STYLES */
+
 .bike-item {
+    background-color: white;
     border: 1px solid #ccc;
     padding: 15px;
     text-align: center;
@@ -210,6 +232,7 @@ button {
     color: #fff;
     background-color: #38743c;
     height: 48px;
+    margin-bottom: 25px;
 
 
 
