@@ -22,18 +22,23 @@
 
 .logo {
     position: absolute;
-    top: 50%; /* Vertically center the logo */
-    transform: translateY(-50%); /* Correctly center the logo vertically */
-    height: auto; /* Maintain aspect ratio */
+    top: 50%;
+    /* Vertically center the logo */
+    transform: translateY(-50%);
+    /* Correctly center the logo vertically */
+    height: auto;
+    /* Maintain aspect ratio */
     width: 300px;
 }
 
 .left-logo {
-    left: 10px; /* Adjust the left position as needed */
+    left: 10px;
+    /* Adjust the left position as needed */
 }
 
 .right-logo {
-    right: 10px; /* Adjust the right position as needed */
+    right: 10px;
+    /* Adjust the right position as needed */
 }
 
 
@@ -52,21 +57,26 @@ body {
     padding: 0;
     /* Remove default padding */
     font-family: 'Jaldi', sans-serif;
-    
+
 }
 
-.background-container{
+.background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/bgg.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-image: url('images/bgg.jpg');
+    /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    /* Cover the entire background */
+    background-position: center;
+    /* Center the background image */
+    background-repeat: no-repeat;
+    /* Do not repeat the background image */
     filter: blur(8px);
-    z-index: -1; /* Move the background behind other content */
+    z-index: -1;
+    /* Move the background behind other content */
 }
 
 .question-page {
