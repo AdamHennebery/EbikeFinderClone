@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike CRUD Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button.delete {
+            background-color: #dc3545;
+        }
+        .form-group button.update {
+            background-color: #ffc107;
+        }
+        .form-group button:hover {
+            opacity: 0.8;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bike CRUD Operations</h1>
+
+        <h2>Create Bike</h2>
+        <form id="createForm">
+            <div class="form-group">
+                <label for="createName">Name</label>
+                <input type="text" id="createName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="createImage">Image URL</label>
+                <input type="text" id="createImage" name="image" required>
+            </div>
+            <div class="form-group">
+                <label for="createTerrains">Terrains</label>
+                <input type="text" id="createTerrains" name="terrains" required>
+            </div>
+            <div class="form-group">
+                <label for="createMotor">Motor</label>
+                <input type="text" id="createMotor" name="motor" required>
+            </div>
+            <div class="form-group">
+                <label for="createFrame">Frame</label>
+                <input type="text" id="createFrame" name="frame" required>
+            </div>
+            <div class="form-group">
+                <label for="createSpecs">Specs</label>
+                <textarea id="createSpecs" name="specs" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="createBuyURL">Buy URL</label>
+                <input type="text" id="createBuyURL" name="buyURL" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Create Bike</button>
+            </div>
+        </form>
+
+        <h2>Update Bike</h2>
+        <form id="updateForm">
+            <div class="form-group">
+                <label for="updateId">Bike ID</label>
+                <input type="text" id="updateId" name="id" required>
+            </div>
+            <div class="form-group">
+                <label for="updateName">Name</label>
+                <input type="text" id="updateName" name="name">
+            </div>
+            <div class="form-group">
+                <label for="updateImage">Image URL</label>
+                <input type="text" id="updateImage" name="image">
+            </div>
+            <div class="form-group">
+                <label for="updateTerrains">Terrains</label>
+                <input type="text" id="updateTerrains" name="terrains">
+            </div>
+            <div class="form-group">
+                <label for="updateMotor">Motor</label>
+                <input type="text" id="updateMotor" name="motor">
+            </div>
+            <div class="form-group">
+                <label for="updateFrame">Frame</label>
+                <input type="text" id="updateFrame" name="frame">
+            </div>
+            <div class="form-group">
+                <label for="updateSpecs">Specs</label>
+                <textarea id="updateSpecs" name="specs"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="updateBuyURL">Buy URL</label>
+                <input type="text" id="updateBuyURL" name="buyURL">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="update">Update Bike</button>
+            </div>
+        </form>
+
+        <h2>Delete Bike</h2>
+        <form id="deleteForm">
+            <div class="form-group">
+                <label for="deleteId">Bike ID</label>
+                <input type="text" id="deleteId" name="id" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="delete">Delete Bike</button>
+            </div>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="CRUD.js"></script>
+</body>
+</html>
